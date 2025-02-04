@@ -15,7 +15,8 @@ const ScoreSettings = () => {
 
   const onChangeRules = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    const value = e.target.value;
+    // const value = e.target.value;
+    const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 입력 가능하게 필터링
     setNewRules(prev => ({ ...prev, [name]: Number(value) }));
   };
 
