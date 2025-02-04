@@ -20,11 +20,7 @@ const ScoreSettings = () => {
   };
 
   const onChangeWinningScore = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 입력 가능하게 필터링
-
-    if (value === "" || Number(value) === 0) {
-      value = "30"; // 최소값을 30로 유지
-    }
+    const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 입력 가능하게 필터링
 
     const numericValue = Number(value);
     setWinningScore(numericValue);
@@ -44,9 +40,9 @@ const ScoreSettings = () => {
           <label className="flex items-center">
             <span className="w-32 text-sm text-[#333333] leading-[18px]">정답 점수:</span>
             <input
-              type="number"
+              type="text"
               name="correctGuess"
-              value={newRules?.correctGuess ?? 0}
+              value={String(newRules?.correctGuess) ?? "0"}
               onChange={onChangeRules}
               className="border-[1px] p-1 w-full text-black text-base focus:outline-none border-[#D1D1D1]"
             />
@@ -54,9 +50,9 @@ const ScoreSettings = () => {
           <label className="flex items-center">
             <span className="w-32 text-sm text-[#333333] leading-[18px]">부분 정답:</span>
             <input
-              type="number"
+              type="text"
               name="partialGuess"
-              value={newRules?.partialGuess ?? 0}
+              value={String(newRules?.partialGuess) ?? "0"}
               onChange={onChangeRules}
               className="border-[1px] p-1 w-full text-black text-base focus:outline-none border-[#D1D1D1]"
             />
@@ -64,9 +60,9 @@ const ScoreSettings = () => {
           <label className="flex items-center">
             <span className="w-32 text-sm text-[#333333] leading-[18px]">오답 점수:</span>
             <input
-              type="number"
+              type="text"
               name="incorrectGuess"
-              value={newRules?.incorrectGuess ?? 0}
+              value={String(newRules?.incorrectGuess) ?? "0"}
               onChange={onChangeRules}
               className="border-[1px] p-1 w-full text-black text-base focus:outline-none border-[#D1D1D1]"
             />
@@ -88,9 +84,9 @@ const ScoreSettings = () => {
             승리 점수:
           </label>
           <input
-            type="number"
+            type="text"
             id="winningScore"
-            value={winningScore}
+            value={String(winningScore) || ""}
             onChange={onChangeWinningScore}
             className="w-20 border-[1px] p-1 text-black text-base focus:outline-none border-[#D1D1D1]"
           />
